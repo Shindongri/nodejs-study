@@ -1,5 +1,14 @@
 const express = require('express');
 const app = express();
+app.locals.pretty = true;
+
+app.set('view engine', 'jade');
+app.set('views', './views');
+
+app.get('/template', (req, res) => {
+    res.render('temp', { time: Date(), _title : 'Jade'});
+});
+
 app.use(express.static('public'));
 
 app.get('/', (req, res) => { // Router
